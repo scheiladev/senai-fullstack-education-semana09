@@ -24,8 +24,9 @@ Cria os endpoints POST para cada uma das entidades, lembrando que para emprésti
 
 Exemplo de caminho das entidades:
 
-- /livro
+- /livros
 - /membros
+- /emprestimos
 - /bibliotecarios
 - /vistantes
 
