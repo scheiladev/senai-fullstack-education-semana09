@@ -1,6 +1,7 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.LivroService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,8 @@ public class LivroController {
   }
 
   @PutMapping("{id}")
-  public LivroEntity atualizar(@PathVariable Long id, @RequestBody LivroEntity livro) throws Exception {
-    return livroService.atualizar(id, livro);
+  public void atualizar(@PathVariable Long id, @RequestBody LivroEntity livro) throws Exception {
+    livroService.atualizar(id, livro);
   }
 
   @DeleteMapping("{id}")

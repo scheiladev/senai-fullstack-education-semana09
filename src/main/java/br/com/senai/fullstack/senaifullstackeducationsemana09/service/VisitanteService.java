@@ -28,12 +28,8 @@ public class VisitanteService {
     return visitanteRepository.save(visitante);
   }
 
-  public VisitanteEntity atualizar(VisitanteEntity visitante) {
-    return visitanteRepository.update(
-        visitante.getNome(),
-        visitante.getTelefone(),
-        visitante.getId()
-    );
+  public void atualizar(Long id, VisitanteEntity visitante) throws Exception {
+    visitanteRepository.update(id, visitante.getNome(), visitante.getTelefone());
   }
 
   public void deletar(Long id) throws Exception {

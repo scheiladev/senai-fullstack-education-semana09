@@ -1,6 +1,7 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.BibliotecarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,31 +12,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BibliotecarioService {
 
-  public final BibliotecarioRepository bibliotecarioRrepository;
+  public final BibliotecarioRepository bibliotecarioRepository;
 
   public List<BibliotecarioEntity> listarTodos() {
-    return bibliotecarioRrepository.findAll();
+    return bibliotecarioRepository.findAll();
   }
 
   public BibliotecarioEntity buscarPorId(Long id) throws Exception {
-    return bibliotecarioRrepository.findById(id).orElseThrow(() -> new Exception("Bibliotecário não encontrado!"));
+    return bibliotecarioRepository.findById(id).orElseThrow(() -> new Exception("Bibliotecário não encontrado!"));
   }
   public BibliotecarioEntity salvar(BibliotecarioEntity bibliotecario) throws Exception {
     bibliotecario.setId(null);
-    return bibliotecarioRrepository.save(bibliotecario);
+    return bibliotecarioRepository.save(bibliotecario);
   }
 
-  public BibliotecarioEntity atualizar(Long id, BibliotecarioEntity bibliotecario) throws Exception {
-    BibliotecarioEntity entity = buscarPorId(id);
-    entity.setNome(bibliotecario.getNome());
-    entity.setEmail(bibliotecario.getEmail());
-    entity.setSenha(bibliotecario.getSenha());
-    return bibliotecarioRrepository.save(entity);
+  public void atualizar(Long id, BibliotecarioEntity bibliotecario) throws Exception {
+    bibliotecarioRepository.update(id, bibliotecario.getNome(), bibliotecario.getEmail(), bibliotecario.getSenha());
   }
 
   public void deletar(Long id) throws Exception {
     BibliotecarioEntity bibliotecario = buscarPorId(id);
-    bibliotecarioRrepository.delete(bibliotecario);
+    bibliotecarioRepository.delete(bibliotecario);
   }
 
 }

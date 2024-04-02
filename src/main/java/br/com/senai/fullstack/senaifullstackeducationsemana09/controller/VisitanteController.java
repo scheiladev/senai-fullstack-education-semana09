@@ -2,6 +2,8 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.VisitanteService;
+import jakarta.persistence.Entity;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,14 +33,9 @@ public class VisitanteController {
     return visitanteService.salvar(visitante);
   }
 
-  @PutMapping
-  public VisitanteEntity atualizar(@RequestBody VisitanteEntity visitante) throws Exception {
-    return visitanteService.atualizar(
-        new VisitanteEntity(
-            visitante.getId(),
-            visitante.getNome(),
-            visitante.getTelefone()
-        ));
+  @PutMapping("{id}")
+  public void atualizar(@PathVariable Long id, @RequestBody VisitanteEntity visitante) throws Exception {
+    visitanteService.atualizar(id, visitante);
   }
 
   @DeleteMapping("{id}")

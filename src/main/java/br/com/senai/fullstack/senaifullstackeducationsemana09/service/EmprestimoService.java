@@ -3,6 +3,7 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.EmprestimoEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.EmprestimoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,13 +29,8 @@ public class EmprestimoService {
     return emprestimoRepository.save(emprestimo);
   }
 
-  public EmprestimoEntity atualizar(Long id, EmprestimoEntity emprestimo) throws Exception {
-    EmprestimoEntity entity = buscarPorId(id);
-    entity.setLivro(emprestimo.getLivro());
-    entity.setMembro(emprestimo.getMembro());
-    entity.setDataEmprestimo(emprestimo.getDataEmprestimo());
-    entity.setDataDevolucao(emprestimo.getDataDevolucao());
-    return emprestimoRepository.save(entity);
+  public void atualizar(Long id, EmprestimoEntity emprestimo) throws Exception {
+    emprestimoRepository.update(id, emprestimo.getLivro(), emprestimo.getMembro(), emprestimo.getDataEmprestimo(), emprestimo.getDataDevolucao());
   }
 
   public void deletar(Long id) throws Exception {

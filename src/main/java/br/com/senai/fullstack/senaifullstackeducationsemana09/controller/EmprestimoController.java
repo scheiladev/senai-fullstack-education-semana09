@@ -2,6 +2,7 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.EmprestimoEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.EmprestimoService;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,8 @@ public class EmprestimoController {
   }
 
   @PutMapping("{id}")
-  public EmprestimoEntity atualizar(@PathVariable Long id, @RequestBody EmprestimoEntity emprestimo) throws Exception {
-    return emprestimoService.atualizar(id, emprestimo);
+  public void atualizar(@PathVariable Long id, @RequestBody EmprestimoEntity emprestimo) throws Exception {
+    emprestimoService.atualizar(id, emprestimo);
   }
 
   @DeleteMapping("{id}")

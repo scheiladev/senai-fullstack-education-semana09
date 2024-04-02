@@ -2,6 +2,7 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,14 +28,9 @@ public class LivroService {
     return livroRepository.save(livro);
   }
 
-  public LivroEntity atualizar(Long id, LivroEntity livro) throws Exception {
-    LivroEntity entity = buscarPorId(id);
-    entity.setTitulo(livro.getTitulo());
-    entity.setAutor(livro.getAutor());
-    entity.setAnoPublicacao(livro.getAnoPublicacao());
-    return livroRepository.save(entity);
+  public void atualizar(Long id, LivroEntity livro) throws Exception {
+    livroRepository.update(id, livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao());
   }
-
 
   public void deletar(Long id) throws Exception {
     LivroEntity livro = buscarPorId(id);

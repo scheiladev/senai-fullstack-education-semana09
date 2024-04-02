@@ -3,6 +3,7 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.MembroEntity;
+import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.MembroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,12 +29,8 @@ public class MembroService {
     return membroRepository.save(membro);
   }
 
-  public MembroEntity atualizar(Long id, MembroEntity membro) throws Exception {
-    MembroEntity entity = buscarPorId(id);
-    entity.setNome(membro.getNome());
-    entity.setEndereco(membro.getEndereco());
-    entity.setTelefone(membro.getTelefone());
-    return membroRepository.save(entity);
+  public void atualizar(Long id, MembroEntity membro) throws Exception {
+    membroRepository.update(id, membro.getNome(), membro.getEndereco(), membro.getTelefone());
   }
 
   public void deletar(Long id) throws Exception {
