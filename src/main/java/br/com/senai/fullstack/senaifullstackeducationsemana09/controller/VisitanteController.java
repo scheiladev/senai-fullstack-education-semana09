@@ -2,8 +2,6 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.VisitanteService;
-import jakarta.persistence.Entity;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

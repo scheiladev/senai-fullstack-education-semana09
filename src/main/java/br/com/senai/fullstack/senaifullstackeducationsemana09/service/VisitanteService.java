@@ -1,7 +1,5 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.MembroEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.VisitanteRepository;
 import lombok.RequiredArgsConstructor;

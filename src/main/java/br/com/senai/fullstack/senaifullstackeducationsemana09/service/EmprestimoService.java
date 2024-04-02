@@ -1,9 +1,6 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.service;
 
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.EmprestimoEntity;
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.repository.EmprestimoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

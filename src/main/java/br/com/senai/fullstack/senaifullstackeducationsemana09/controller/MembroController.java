@@ -1,6 +1,5 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.LivroEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.MembroEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.MembroService;
 import org.springframework.web.bind.annotation.*;

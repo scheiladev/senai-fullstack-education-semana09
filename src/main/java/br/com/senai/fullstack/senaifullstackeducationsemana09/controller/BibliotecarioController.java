@@ -1,7 +1,6 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
-import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.BibliotecarioService;
 import org.springframework.web.bind.annotation.*;
 
