@@ -2,20 +2,47 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.VisitanteEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.VisitanteService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/visitantes")
+@RequestMapping("visitantes")
 public class VisitanteController {
 
   private final VisitanteService visitanteService;
 
+  public VisitanteController(VisitanteService visitanteService) {
+    this.visitanteService = visitanteService;
+  }
+
   @GetMapping
   public List<VisitanteEntity> listarTodos() {
-    return visitanteService.listar();
+    return visitanteService.listarTodos();
+  }
+
+  @GetMapping("{id}")
+  public VisitanteEntity buscarPorId(@PathVariable Long id) throws Exception {
+    return visitanteService.buscarPorId(id);
+  }
+
+  @PostMapping
+  public VisitanteEntity salvar(@RequestBody VisitanteEntity visitante) throws Exception {
+    return visitanteService.salvar(visitante);
+  }
+
+  @PutMapping
+  public VisitanteEntity atualizar(@RequestBody VisitanteEntity visitante) throws Exception {
+    return visitanteService.atualizar(
+        new VisitanteEntity(
+            visitante.getId(),
+            visitante.getNome(),
+            visitante.getTelefone()
+        ));
+  }
+
+  @DeleteMapping("{id}")
+  public void deletar(@PathVariable Long id) throws Exception {
+    visitanteService.deletar(id);
   }
 }

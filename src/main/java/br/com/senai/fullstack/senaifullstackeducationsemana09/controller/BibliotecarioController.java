@@ -2,22 +2,43 @@ package br.com.senai.fullstack.senaifullstackeducationsemana09.controller;
 
 import br.com.senai.fullstack.senaifullstackeducationsemana09.entities.BibliotecarioEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana09.service.BibliotecarioService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/bibliotecarios")
+@RequestMapping("bibliotecarios")
 public class BibliotecarioController {
 
   private final BibliotecarioService bibliotecarioService;
 
-  @GetMapping
-  public List<BibliotecarioEntity> listarTodos() {
-    return bibliotecarioService.listar();
+  public BibliotecarioController(BibliotecarioService bibliotecarioService) {
+    this.bibliotecarioService = bibliotecarioService;
   }
 
+  @GetMapping
+  public List<BibliotecarioEntity> listarTodos() {
+    return bibliotecarioService.listarTodos();
+  }
+
+  @GetMapping("{id}")
+  public BibliotecarioEntity buscarPorId(@PathVariable Long id) throws Exception {
+    return bibliotecarioService.buscarPorId(id);
+  }
+
+  @PostMapping
+  public BibliotecarioEntity salvar(@RequestBody BibliotecarioEntity bibliotecario) throws Exception {
+    return bibliotecarioService.salvar(bibliotecario);
+  }
+
+  @PutMapping("{id}")
+  public BibliotecarioEntity atualizar(@PathVariable Long id, @RequestBody BibliotecarioEntity bibliotecario) throws Exception {
+    return bibliotecarioService.atualizar(id, bibliotecario);
+  }
+
+  @DeleteMapping("{id}")
+  public void deletar(@PathVariable Long id) throws Exception {
+    bibliotecarioService.deletar(id);
+  }
 }
